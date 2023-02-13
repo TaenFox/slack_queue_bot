@@ -26,32 +26,37 @@ def handle_slack_actions():
         action = payload["actions"][0]
         action_id = action["action_id"]
         action_type = action["type"]
-        queue = create_queue(payload["message"]["ts"])
+        queue = create_queue(payload["message"])
 
         # Do something based on the action type and value
         if action_type == "button":
+            uid = payload["user"]["id"]
+            uname = payload["user"]["username"]
             if action_id == "next-order":
                 queue.next()
-                send_message_with_blocks(payload["container"]["channel_id"],queue.mes_payload)
+                send_message_with_blocks(payload["container"]["channel_id"],queue.mes_payload())
                 delete_message(payload["container"]["channel_id"], payload["container"]["message_ts"])
+                return f"User {uname} is next at {queue.name}"
 
 
             elif action_id == "enter-order":
-                queue.add(User(payload["user"]["id"],payload["user"]["username"]))
-                send_message_with_blocks(payload["container"]["channel_id"],queue.mes_payload)
+                queue.add(User(uid,uname))
+                send_message_with_blocks(payload["container"]["channel_id"],queue.mes_payload())
                 delete_message(payload["container"]["channel_id"], payload["container"]["message_ts"])
+                return f"User {uname} enter to order at {queue.name}"
 
             elif action_id == "exit-order":
-                queue.delete(User(payload["user"]["id"],payload["user"]["username"]))
-                send_message_with_blocks(payload["container"]["channel_id"],queue.mes_payload)
+                queue.delete(User(uid,uname))
+                send_message_with_blocks(payload["container"]["channel_id"],queue.mes_payload())
                 delete_message(payload["container"]["channel_id"], payload["container"]["message_ts"])
+                return f"User {uname} is out of order {queue.name}"
 
         elif action_type == "static_select":
             uid = action["selected_option"]["value"]
             uname = action["selected_option"]["text"]["text"]
-            queue.cur(User(uid, uname))
-            send_message_with_blocks(payload["container"]["channel_id"],queue.mes_payload)
+            send_message_with_blocks(payload["container"]["channel_id"],queue.mes_payload())
             delete_message(payload["container"]["channel_id"], payload["container"]["message_ts"])
+            return f"User {uname} has been choosen in {queue.name}"
 
 def process_queue(channel_id, title):
     queue = Queue(title)
@@ -112,19 +117,27 @@ class Queue:
         self.users = []
 
     def next(self):
+        if len(self.users) == 0: return
         first = self.users.pop(0)
         self.users.append(first)
+        for user in self.users:
+            if user.id == 0: self.users.remove(user)
         return self.users
 
     def add(self, user):
+        if user.id == "0": return
         self.users.append(user)
+        for user in self.users:
+            if user.id == 0: self.users.remove(user)
 
     def delete(self, user: User):
         if user.id in [user.id for user in self.users]:
             for e in self.users:
                 if e.id == user.id:
                     self.users.remove(e)
-                    return
+        for user in self.users:
+            if user.id == 0: self.users.remove(user)
+        return
 
     def cur(self, user):
         if user.id in [user.id for user in self.users]:
@@ -132,7 +145,9 @@ class Queue:
                 if e.id == user.id:
                     self.users.remove(e)
                     self.users.insert(0,e)
-                    return
+        for user in self.users:
+            if user.id == 0: self.users.remove(user)
+        return
 
     def mes_order(self):
         if len(self.users) == 0:
@@ -154,7 +169,7 @@ class Queue:
         return options
 
     def mes_top(self):
-        if len(self.users) > 0:
+        if len(self.users) > 0 and self.users[0].id != "0":
             top = self.users[0]
             return {"type": "section",
                     "text": {"type": "mrkdwn",

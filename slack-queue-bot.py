@@ -1,4 +1,4 @@
-import json, requests
+import json, requests, random, socket, os
 from flask import Flask, request, jsonify
 import myconf
 
@@ -62,16 +62,6 @@ def process_queue(channel_id, title):
     queue = Queue(title)
     send_message_with_blocks(channel_id,queue.mes_payload())
 
-def get_message_by_ts(channel, ts):
-    headers = {
-        'Authorization': 'Bearer ' + SLACK_TOKEN,
-        'Content-Type': 'application/json;charset=utf-8'
-    }
-    url = "https://slack.com/api/conversations.history?channel={}&oldest={}&inclusive=true&limit=1".format(channel, ts)
-    response = requests.get(url, headers=headers)
-    message = json.loads(response.text)
-    return message['messages'][0]
-
 def send_message_with_blocks(channel, blocks):
     headers = {
         'Authorization': 'Bearer ' + SLACK_TOKEN,
@@ -102,9 +92,70 @@ def delete_message(channel, ts):
 
 def create_queue (message):
     queue = Queue(message["blocks"][0]["text"]["text"])
-    for user in message["blocks"][3]["elements"][0]["options"]:
+    for user in message["blocks"][5]["elements"][0]["options"]:
         queue.add(User(user["value"], user["text"]["text"]))
     return queue
+
+def queue_label():
+    label = [
+        "Идёт вне очереди",
+        "Отстаёт от очереди",
+        "Не следует очереди",
+        "Обходит очередь",
+        "Не следует правилам",
+        "Пренебрегает очередью",
+        "Не уважает очередь",
+        "Идёт вразрез",
+        "Нарушает порядок",
+        "Не уступает место",
+        "Не учитывает очередь",
+        "Не дожидается",
+        "Не следует закону",
+        "Игнорирует стариков и детей",
+        "Не уступает путь",
+        "Не соблюдает правила",
+        "Не учитывает других",
+        "Обходит стариков и детей",
+        "Шеф, а я вас вижу!",
+        "Не учитывает законные права",
+        "Мне только спросить...",
+        "Отталкивает инвалидов ногами",
+        "Гадает на ромашке кто потом",
+        "Женщина, я опаздываю!",
+        "Я ветеран, пропустите!",
+        "Кто последний, тот..."
+        ]
+    return random.choice(label)
+
+def queue_desc():
+    desc = []
+    desc.append("В магазине жираф вылез из своей клетки и прошел вперед всех в очереди к кассе. Все покупатели пораженно глядели, как жираф беспрепятственно оплачивает свой товар.")
+    desc.append("В кинотеатре группа ведьм игнорировала очередь и вошла в зал первыми, несмотря на протесты других зрителей.")
+    desc.append("В парке кот не ждал своей очереди и прыгнул на весло перед детьми. Он уселся там и начал смеяться, когда дети пытались вернуть весло.")
+    desc.append("В ресторане пришелец из далекой галактики вошел в зал и прошел вперед всех в очереди. Он заказал необычные блюда и исчез, не дожидаясь своего заказа.")
+    desc.append("В музее крыса выбежала из своей клетки и прошла вперед всех в очереди к экспонату.")
+    desc.append("В кинотеатре мужчина встал в очередь к кассе, но вдруг он услышал знакомый голос. Он повернулся и увидел свою бывшую.")
+    desc.append("В магазине покупатель пришел с собакой и встал в очередь. Но собака начала жаловаться и вдруг убежала.")
+    desc.append("В ресторане женщина стояла в очереди и вдруг начала плакать. Остальные люди в очереди начали уступать ей место, но она продолжала плакать и не могла прийти в себя.")
+    desc.append("Однажды в магазине все покупатели стояли в очереди к кассе, а один мужчина решил пройти мимо всех и подошел к кассе, где была свободна кассирша. Все вокруг недоумевали, почему он так делает, но он просто ответил: \"Я же кассир\".")
+    desc.append("На автобусной остановке все ждали свой автобус, когда вдруг один пенсионер прошел мимо всех и сел в первый попавшийся автобус. Когда его упрекнули в нарушении очереди, он ответил: \"Я уже ждал свой автобус целый день, я не могу ждать еще\"")
+    desc.append("В музее все ждали своей очереди, чтобы посмотреть выставку, когда вдруг один ребенок решил пройти мимо всех и зашел в зал. Его мама упрекнула его в нарушении очереди, но он ответил: \"Я же маленький, у меня нет времени ждать\"")
+    desc.append("В метро была очередь к кассе, и вдруг вошел пожилой мужчина с тележкой. Он спокойно прошел мимо всех и просто сказал: \"У меня экстренный выход\". Но когда он дошел до кассы, оказалось, что он просто не хотел стоять в очереди.")
+    desc.append("В кинотеатре очередь к кассе была нереально длинной, и вдруг вошла женщина с маленьким ребенком. Она прошла мимо всех и просто сказала: \"У нас срочный вход\". Но когда они дошли до кассы, она просто забрала билеты на фильм, который начинался через час.")
+    desc.append("На пляже была очередь к вездеходу, который вез людей на остров. И вдруг появился жираф, который просто прошел мимо всех и уселся в вездеход")
+    return random.choice(desc)
+    
+def get_local_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]
+
+def random_image():
+    path = "./pic"
+    files = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
+    random_file = random.choice(files)
+    #return "http://" + get_local_ip() + "/pic/" + random_file
+    return "http://slack-queue-bot.host1814471.ru.host1814471.serv76.hostland.pro/" + random_file + "?w=250"
 
 class User:
     def __init__(self, id, name):
@@ -135,6 +186,7 @@ class Queue:
             for e in self.users:
                 if e.id == user.id:
                     self.users.remove(e)
+                    break
         for user in self.users:
             if user.id == 0: self.users.remove(user)
         return
@@ -197,13 +249,23 @@ class Queue:
     def mes_payload(self):
         return {"blocks": [{"type": "header",
                             "text": {"type": "plain_text", "text": self.name, "emoji": True}},
+                           {"type": "image",
+                            "image_url": random_image(),
+                            "alt_text": "Очередь"},
+                            {"type": "context",
+                             "elements": [
+                                {"type": "plain_text",
+                                    "text": queue_desc(),
+                                    "emoji": True}
+                            ]
+                            },
                            self.mes_top(),
                            {"type": "section",
                             "text": self.mes_order()},
                            {"type": "actions",
                             "elements": [{"type": "static_select",
                                           "placeholder": {"type": "plain_text",
-                                                         "text": "Идёт без очереди", "emoji": True},
+                                                         "text": queue_label(), "emoji": True},
                                           "options": self.mes_options(),
                                           "action_id": "out-of-order"}]},
                            {"type": "divider"},

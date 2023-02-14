@@ -23,17 +23,17 @@
 
 При взаимодействии пользователей с очередью в сообщении публикуется новое с актуализированными данными, а старое удаляется. В новом сообщении пользователь, который идёт следующим по порядку очереди получает новое уведомление.
 
-<aside>
+
 📌 Примеры:
 
 - Ведущий дейли команды разработки
 - Дежурство внутри команды
-</aside>
 
-<aside>
+
+
 🧭 [**Ссылка на тестовое пространство Slack**](https://join.slack.com/t/taenfoxspace/shared_invite/zt-1o0rp8oya-xBoXQb~D8XKJeo_wvMGzxA)
 
-</aside>
+
 
 # Настройка приложения и используемые API
 
@@ -52,23 +52,18 @@
 
 После выдачи разрешения в разделе ****OAuth Tokens for Your Workspace**** по нажатию кнопки устанавливаем приложение в тестовое пространство Slack. После установки заполнено поле **Bot User OAuth Token** - это ключ для работы бота. Он используется для отправки запросов API
 
-<aside>
 🧭 **Полезные ссылки**
-
 [Understanding OAuth scopes for Bots](https://api.slack.com/tutorials/understanding-oauth-scopes-bot)
 
-</aside>
 
 ### Создание команды
 
 В разделе нажать ****Slash Commands**** кнопку **Create New Command**. В возникшем диалоговом окне необходимо заполнить короткое название и URL для отправки HTTP запроса, когда команда запущена
 
-<aside>
 🧭 **Полезные ссылки**
-
 [Enabling interactivity with Slash Commands](https://api.slack.com/interactivity/slash-commands)
 
-</aside>
+
 
 ### Дополнительные функции
 
@@ -76,10 +71,10 @@
 
 ## Работа с API Slack
 
-<aside>
+
 🧭 [**Схема взаимодействия пользователя, бота и Slack**](https://www.plantuml.com/plantuml/png/XLEzRXD14ExtAKPke_00557UWPRcOX_YXF55lWsYS84J88gmG49K54GHDT8bPCCbJfPN-EQD-6Ot72R1GdBXdPtlvvkTssvyCVLxpyVELtvS2axq3GAkqOhE4V43vsXnWqu_2A8U8kWh11OxiTyP6rfqx8-i1LpgNFTPPJlnGY1hxcarAkL9NVkT-gKhXhwUobvJJgLeP81ZGfUw854ai2Kys7dWTcci6bQxnSHBCow6prB_8_ltz-LExM-fwAt3aaGN26OQOU2IqkPMfdWe-8neyNXz_l-GBg48fmQnNt3AcnQdYFHvHJpEB36BCIb6N0hhlOA-SqJsyhAnGPQJLKc4x26I-iWu-jcj6D65lhyNvEEwsIFqjcMzx_KlPvOtjtxBV4rEbmXhtRfHoKUjNXI-pEOomKhYOpsWzf9uQkjR0_s3v_4ahmpt80-omus-HgJrwmnBspIRpToafbOndDPDu_2DnkCzFWJZ2iBAWINKVK6aVYJfuPyzCprXHn-IHsS-VgPNZ7famvVRqRKF19y8uvu4VB-Bj5Y6mKMcOM5EdZlxhGl9DfA5Avjx2Xs8DHggfILtvMGa5ZGbtkQ9d-al)
 
-![https://juicy-watchmaker-5f2.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0efa775a-7ef4-4a66-bcd9-da7eac9b04e7%2FXLEzRXD14ExtAKPke_00557UWPRcOX_YXF55lWsYS84J88gmG49K54GHDT8bPCCbJfPN-EQD-6Ot72R1GdBXdPtlvvkTssvyCVLxpyVELtvS2axq3GAkqOhE4V43vsXnWqu_2A8U8kWh11OxiTyP6rfqx8-i1LpgNFTPPJlnGY1hxcarAkL9NVkT-gKhXhwUobvJJgLeP81ZGfUw854ai2.png?id=17a87372-b6da-46e0-969b-f1b2a55bea24&table=block&spaceId=110dd269-5623-4f5c-949c-8c2b90418a3f&width=2000&userId=&cache=v2](%D0%91%D0%BE%D1%82-%D0%BE%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D1%8C%20%D0%B4%D0%BB%D1%8F%20Slack%20f1be6135f1994c8d8f30799d56f6f6ef/XLEzRXD14ExtAKPke_00557UWPRcOX_YXF55lWsYS84J88gmG49K54GHDT8bPCCbJfPN-EQD-6Ot72R1GdBXdPtlvvkTssvyCVLxpyVELtvS2axq3GAkqOhE4V43vsXnWqu_2A8U8kWh11OxiTyP6rfqx8-i1LpgNFTPPJlnGY1hxcarAkL9NVkT-gKhXhwUobvJJgLeP81ZGfUw854ai2.png)
+![](https://juicy-watchmaker-5f2.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0efa775a-7ef4-4a66-bcd9-da7eac9b04e7%2FXLEzRXD14ExtAKPke_00557UWPRcOX_YXF55lWsYS84J88gmG49K54GHDT8bPCCbJfPN-EQD-6Ot72R1GdBXdPtlvvkTssvyCVLxpyVELtvS2axq3GAkqOhE4V43vsXnWqu_2A8U8kWh11OxiTyP6rfqx8-i1LpgNFTPPJlnGY1hxcarAkL9NVkT-gKhXhwUobvJJgLeP81ZGfUw854ai2.png?id=17a87372-b6da-46e0-969b-f1b2a55bea24&table=block&spaceId=110dd269-5623-4f5c-949c-8c2b90418a3f&width=2000&userId=&cache=v2)
 
 ****Примечание: удаление сообщения через контекстное меню доступно для администраторов пространства****
 
@@ -110,7 +105,6 @@
     @enduml
     ```
     
-</aside>
 
 ### API отправки и удаления сообщений
 
@@ -127,12 +121,12 @@
 
 Бот должен уметь обрабатывать входящие HTTP запросы и на основе полученных данных реализовывать свою логику.
 
-<aside>
+
 🧭 **Полезные ссылки**
 
 [Reference: block_actions payloads](https://api.slack.com/reference/interaction-payloads/block-actions)
 
-</aside>
+
 
 # Макет сообщения-очереди
 
@@ -244,14 +238,14 @@
     ```
     
 
-<aside>
-📌 **[Конструктор сообщения](https://app.slack.com/block-kit-builder/T04LPFEE890#%7B%22blocks%22:%5B%7B%22type%22:%22header%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%9D%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BE%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D0%B8%22,%22emoji%22:true%7D%7D,%7B%22type%22:%22section%22,%22text%22:%7B%22type%22:%22mrkdwn%22,%22text%22:%22*%D0%A1%D0%B5%D0%B9%D1%87%D0%B0%D1%81:%20@%D0%90%D1%84%D0%B0%D0%BD%D0%B0%D1%81%D1%8C%D0%B5%D0%B2*%22%7D,%22accessory%22:%7B%22type%22:%22button%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%A1%D0%BB%D0%B5%D0%B4%D1%83%D1%8E%D1%89%D0%B8%D0%B9%22,%22emoji%22:true%7D,%22action_id%22:%22next-order%22%7D%7D,%7B%22type%22:%22section%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22-%20%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%5Cn-%20%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%5Cn-%20%D0%A1%D0%B8%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%22,%22emoji%22:true%7D%7D,%7B%22type%22:%22actions%22,%22elements%22:%5B%7B%22type%22:%22static_select%22,%22placeholder%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%98%D0%B4%D1%91%D1%82%20%D0%B1%D0%B5%D0%B7%20%D0%BE%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D0%B8%22,%22emoji%22:true%7D,%22options%22:%5B%7B%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%22,%22emoji%22:true%7D,%22value%22:%22U313567%22%7D,%7B%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%22,%22emoji%22:true%7D,%22value%22:%22U325567%22%7D,%7B%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%A1%D0%B8%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%22,%22emoji%22:true%7D,%22value%22:%22U389567%22%7D%5D,%22action_id%22:%22out-of-order%22%7D%5D%7D,%7B%22type%22:%22divider%22%7D,%7B%22type%22:%22actions%22,%22elements%22:%5B%7B%22type%22:%22button%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%97%D0%B0%D0%BD%D1%8F%D1%82%D1%8C%22,%22emoji%22:true%7D,%22action_id%22:%22enter-order%22%7D,%7B%22type%22:%22button%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%9F%D0%BE%D0%BA%D0%B8%D0%BD%D1%83%D1%82%D1%8C%22,%22emoji%22:true%7D,%22action_id%22:%22exit-order%22%7D%5D%7D%5D%7D)**
 
-[**Интерактивный прототип](https://www.figma.com/proto/yQcpRtYwX1qZm87TiVNwZZ/%D0%91%D0%BE%D1%82-%D0%BE%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D1%8C-%D0%B4%D0%BB%D1%8F-Slack?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A2) - тут можно посмотреть как работает очередь**
+📌 [**Конструктор сообщения**](https://app.slack.com/block-kit-builder/T04LPFEE890#%7B%22blocks%22:%5B%7B%22type%22:%22header%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%9D%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BE%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D0%B8%22,%22emoji%22:true%7D%7D,%7B%22type%22:%22section%22,%22text%22:%7B%22type%22:%22mrkdwn%22,%22text%22:%22*%D0%A1%D0%B5%D0%B9%D1%87%D0%B0%D1%81:%20@%D0%90%D1%84%D0%B0%D0%BD%D0%B0%D1%81%D1%8C%D0%B5%D0%B2*%22%7D,%22accessory%22:%7B%22type%22:%22button%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%A1%D0%BB%D0%B5%D0%B4%D1%83%D1%8E%D1%89%D0%B8%D0%B9%22,%22emoji%22:true%7D,%22action_id%22:%22next-order%22%7D%7D,%7B%22type%22:%22section%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22-%20%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%5Cn-%20%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%5Cn-%20%D0%A1%D0%B8%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%22,%22emoji%22:true%7D%7D,%7B%22type%22:%22actions%22,%22elements%22:%5B%7B%22type%22:%22static_select%22,%22placeholder%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%98%D0%B4%D1%91%D1%82%20%D0%B1%D0%B5%D0%B7%20%D0%BE%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D0%B8%22,%22emoji%22:true%7D,%22options%22:%5B%7B%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%98%D0%B2%D0%B0%D0%BD%D0%BE%D0%B2%22,%22emoji%22:true%7D,%22value%22:%22U313567%22%7D,%7B%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%9F%D0%B5%D1%82%D1%80%D0%BE%D0%B2%22,%22emoji%22:true%7D,%22value%22:%22U325567%22%7D,%7B%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%A1%D0%B8%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%22,%22emoji%22:true%7D,%22value%22:%22U389567%22%7D%5D,%22action_id%22:%22out-of-order%22%7D%5D%7D,%7B%22type%22:%22divider%22%7D,%7B%22type%22:%22actions%22,%22elements%22:%5B%7B%22type%22:%22button%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%97%D0%B0%D0%BD%D1%8F%D1%82%D1%8C%22,%22emoji%22:true%7D,%22action_id%22:%22enter-order%22%7D,%7B%22type%22:%22button%22,%22text%22:%7B%22type%22:%22plain_text%22,%22text%22:%22%D0%9F%D0%BE%D0%BA%D0%B8%D0%BD%D1%83%D1%82%D1%8C%22,%22emoji%22:true%7D,%22action_id%22:%22exit-order%22%7D%5D%7D%5D%7D)
 
-</aside>
+[**Интерактивный прототип**](https://www.figma.com/proto/yQcpRtYwX1qZm87TiVNwZZ/%D0%91%D0%BE%D1%82-%D0%BE%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D1%8C-%D0%B4%D0%BB%D1%8F-Slack?node-id=1%3A2&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A2) - тут можно посмотреть как работает очередь
 
-![https://juicy-watchmaker-5f2.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6a877c16-c8f5-4055-8e10-a13162105657%2FUntitled.png?id=d43cb46a-eb20-4013-a680-f9d70f0d8b96&table=block&spaceId=110dd269-5623-4f5c-949c-8c2b90418a3f&width=2000&userId=&cache=v2](%D0%91%D0%BE%D1%82-%D0%BE%D1%87%D0%B5%D1%80%D0%B5%D0%B4%D1%8C%20%D0%B4%D0%BB%D1%8F%20Slack%20f1be6135f1994c8d8f30799d56f6f6ef/Untitled.png)
+
+
+![](https://juicy-watchmaker-5f2.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6a877c16-c8f5-4055-8e10-a13162105657%2FUntitled.png?id=d43cb46a-eb20-4013-a680-f9d70f0d8b96&table=block&spaceId=110dd269-5623-4f5c-949c-8c2b90418a3f&width=2000&userId=&cache=v2)
 
 Сообщение построено из различных блоков, каждый из которых выполняет свою функцию
 
@@ -307,7 +301,7 @@
     - публикуется новое сообщение, содержащее актуальное состояние и порядок очереди
     - удаляется сообщение, в котором была нажата кнопка
 
-<aside>
+
 📌 Пример Action, отправляемого в бота
 
 - JSON
@@ -327,7 +321,7 @@
     }
     ```
     
-</aside>
+
 
 ## Порядок очереди
 
@@ -407,7 +401,7 @@
     - публикуется новое сообщение, содержащее актуальное состояние и порядок очереди
     - удаляется сообщение, в котором была нажата кнопка
 
-<aside>
+
 📌 Пример Action, отправляемого в бота
 
 - JSON
@@ -434,7 +428,7 @@
     }
     ```
     
-</aside>
+
 
 ## Вход/выход очереди
 
@@ -480,7 +474,7 @@
     - публикуется новое сообщение, содержащее актуальное состояние и порядок очереди
     - удаляется сообщение, в котором была нажата кнопка
     
-    <aside>
+    
     📌 Пример Action, отправляемого в бота
     
     - JSON
@@ -499,7 +493,7 @@
         		}
         ```
         
-    </aside>
+    
     
 - При нажатии кнопки “Покинуть”
     - пользователь, который нажал кнопку:
@@ -508,7 +502,7 @@
     - публикуется новое сообщение, содержащее актуальное состояние и порядок очереди
     - удаляется сообщение, в котором была нажата кнопка
     
-    <aside>
+    
     📌 Пример Action, отправляемого в бота
     
     - JSON
@@ -527,4 +521,4 @@
         		}
         ```
         
-    </aside>
+    

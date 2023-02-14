@@ -154,6 +154,8 @@ def random_image():
     path = "./pic"
     files = [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
     random_file = random.choice(files)
+
+    #две строки ниже следует перекомментировать наоборот, чтобы использовать локальную папку ./pic/, а не тестовый хост
     #return "http://" + get_local_ip() + "/pic/" + random_file
     return "http://slack-queue-bot.host1814471.ru.host1814471.serv76.hostland.pro/" + random_file + "?w=250"
 
@@ -273,19 +275,3 @@ class Queue:
 
 if __name__ == "__main__":
     app.run()
-
-
-#users = [User("U04LRV6HF36","Admin Here"),  User(3, "Jane"), User(2, "John"),User(4, "Jim")]
-#john = User(2, "John")
-#queue = Queue("test")
-#for user in users:
-#    queue.add(user)
-#queue.cur(john)
-#print(json.dumps(queue.mes_payload("test")))
-
-
-# channel = "C04LPC6T52P"
-# ts = "1675944894.372669"
-# message = get_message_by_ts(channel, ts)
-# queue = create_queue(message)
-# process_queue(channel, "test")
